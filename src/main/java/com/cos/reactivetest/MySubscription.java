@@ -18,9 +18,17 @@ public class MySubscription implements Subscription {
 	}
 
 	public void request(long n) {
-		
+		while(n > 0) {
+			if (it.hasNext()) {
+				s.onNext(it.next());
+			} else {
+				s.onComplete();
+				break;
+			}
+			n--;
+		}
 	}
-
+	
 	public void cancel() {
 		
 	}
